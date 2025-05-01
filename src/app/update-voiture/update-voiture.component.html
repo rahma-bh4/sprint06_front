@@ -1,0 +1,71 @@
+<div class="container">
+  <div>
+    <h2>Modifier une voiture :</h2>
+  </div>
+  <form [formGroup]="myForm">
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>ID Voiture</label>
+      <input readonly type="text" formControlName="idVoiture"  [(ngModel)]="currentVoiture.idVoiture" name="idVoiture" class="form-control">
+    </div>
+    <span *ngIf="myForm.controls['idVoiture'].hasError('required')&& myForm.controls['idVoiture'].touched"
+    class="text-danger">
+    id Voiture est obligatoire
+  </span>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom Voiture</label>
+      <input type="text" formControlName="nomVoiture" [(ngModel)]="currentVoiture.nomVoiture" name="nomVoiture"
+        class="form-control">
+    </div> <span *ngIf="myForm.controls['nomVoiture'].hasError('required')&& myForm.controls['nomVoiture'].touched"
+      class="text-danger">
+      Nom de Voiture est obligatoire
+    </span><span *ngIf="myForm.controls['nomVoiture'].hasError('minlength')&&
+           myForm.controls['nomVoiture'].touched" class="text-danger">
+      le nom de voiture doit contenir au moins 5 caractères
+    </span>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix Voiture</label>
+      <input type="number" formControlName="prixVoiture" [(ngModel)]="currentVoiture.prixVoiture" name="prixVoiture"
+        class="form-control">
+    </div>
+    <span *ngIf="myForm.controls['prixVoiture'].hasError('required')&& myForm.controls['prixVoiture'].touched"
+      class="text-danger">
+      le prix de Voiture est obligatoire
+    </span>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date création</label>
+      <input type="date" formControlName="dateCreation" [ngModel]="currentVoiture.dateCreation | date: 'yyyy-MM-dd'"
+        (ngModelChange)=" currentVoiture.dateCreation= $event" name="dateCreation" class="form-control">
+    </div> <span *ngIf="myForm.controls['dateCreation'].hasError('required')&& myForm.controls['dateCreation'].touched"
+      class="text-danger">
+      la date de création de Voiture est obligatoire
+    </span>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>email :</label>
+      <input type="text" name="email" class="form-control" formControlName="email" [(ngModel)]="currentVoiture.email">
+    </div>
+    <span *ngIf="myForm.controls['email'].hasError('required')&&  myForm.controls['email'].touched" class="text-danger">
+      email est obligatoire
+    </span>
+    <span *ngIf="myForm.controls['email'].hasError('email')&&  myForm.controls['email'].touched" class="text-danger">
+      email non valide
+    </span>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <select class="form-control form-control-lg" id="idMarque" name="idMarque" formControlName="marque"
+        [(ngModel)]="updatedMarId">
+        <option *ngFor="let marque of marques" [value]="marque.idMar">
+          {{marque.nomMar}}
+        </option>
+      </select>
+    </div> <span *ngIf="myForm.controls['marque'].hasError('required')&& myForm.controls['marque'].touched"
+      class="text-danger">
+      La Marque de Voiture est obligatoire
+    </span>
+
+    <div class="mt-2">
+      <button type="submit" [disabled]="myForm.invalid" (click)="updateVoiture()"
+        class="btn btn-success">Modifer</button>
+    </div>
+  </form>
+</div>
