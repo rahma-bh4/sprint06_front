@@ -39,6 +39,7 @@ export class RegisterComponent {
     this.authService.registerUser(this.user).subscribe({
       next: (res) => {
         this. authService.setRegistredUser(this.user);
+        this.loading=false;
        // alert('veillez confirmer votre email');
        this.toastr.success('veuillez confirmer votre email', 'Confirmation');
 
@@ -46,6 +47,7 @@ export class RegisterComponent {
         // this.router.navigate(["/verifEmail",this.user.email]);
       },
       error: (err: any) => {
+        this.loading=false;
         if (err.error.errorCode == 'USER_EMAIL_ALREADY_EXISTS') {
           this.err = 'Email already used !';
         }
