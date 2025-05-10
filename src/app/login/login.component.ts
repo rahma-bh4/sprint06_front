@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { User } from '../model/user.model';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styles: ``
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styles: ``,
+    standalone: true,
+    imports: [NgIf, FormsModule, RouterLink]
 })
 export class LoginComponent {
 user=new User();

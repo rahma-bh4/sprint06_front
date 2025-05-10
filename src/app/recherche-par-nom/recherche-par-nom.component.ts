@@ -2,11 +2,16 @@ import { Component,OnInit } from '@angular/core';
 import { Marque } from '../model/marque.model';
 import { Voiture } from '../model/voiture.model';
 import { VoitureService } from '../services/voiture.service';
+import { FormsModule } from '@angular/forms';
+import { NgFor, DatePipe } from '@angular/common';
+import { SearchFilterPipe } from '../search-filter.pipe';
 
 @Component({
-  selector: 'app-recherche-par-nom',
-  templateUrl: './recherche-par-nom.component.html',
-  styles: ``
+    selector: 'app-recherche-par-nom',
+    templateUrl: './recherche-par-nom.component.html',
+    styles: ``,
+    standalone: true,
+    imports: [FormsModule, NgFor, DatePipe, SearchFilterPipe]
 })
 export class RechercheParNomComponent implements OnInit {
   voitures:Voiture[]=[];

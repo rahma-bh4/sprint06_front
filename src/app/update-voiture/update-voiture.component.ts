@@ -1,14 +1,29 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Voiture } from '../model/voiture.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VoitureService } from '../services/voiture.service';
 import { Marque } from '../model/marque.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { 
+  FormBuilder, 
+  FormGroup, 
+  Validators,
+  FormControl,
+  FormArray
+} from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-update-voiture',
   templateUrl: './update-voiture.component.html',
-  styles: ``
+  styles: ``,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class UpdateVoitureComponent implements OnInit {
   currentVoiture=new Voiture();

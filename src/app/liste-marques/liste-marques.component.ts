@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { VoitureService } from '../services/voiture.service';
 import { Marque } from '../model/marque.model';
+import { UpdateMarqueComponent } from '../update-marque/update-marque.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-liste-marques',
-  templateUrl: './liste-marques.component.html',
-  styles: ``
+    selector: 'app-liste-marques',
+    templateUrl: './liste-marques.component.html',
+    styles: ``,
+    standalone: true,
+    imports: [UpdateMarqueComponent, NgFor]
 })
 export class ListeMarquesComponent implements OnInit {
   marques : Marque[]=[];

@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { User } from '../model/user.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-verif-email',
-  templateUrl: './verif-email.component.html',
-  styleUrl: './verif-email.component.css',
+    selector: 'app-verif-email',
+    templateUrl: './verif-email.component.html',
+    styleUrl: './verif-email.component.css',
+    standalone: true,
+    imports: [FormsModule],
 })
 export class VerifEmailComponent {
   code: string = '';

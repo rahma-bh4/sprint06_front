@@ -3,7 +3,7 @@ import { Voiture } from '../model/voiture.model';
 import { Marque } from '../model/marque.model';
 import { AuthService } from './auth.service';
 import { Observable, of } from 'rxjs';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MarqueWrapper } from '../model/marqueWrapped.model';
 const httpOptions = {
 

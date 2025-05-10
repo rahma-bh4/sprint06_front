@@ -3,12 +3,14 @@ import { Voiture } from '../model/voiture.model';
 import { VoitureService } from '../services/voiture.service';
 import { Router } from '@angular/router';
 import { Marque } from '../model/marque.model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-add-voiture',
-  templateUrl: './add-voiture.component.html'
-  
+    selector: 'app-add-voiture',
+    templateUrl: './add-voiture.component.html',
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgIf, NgFor]
 })
 export class AddVoitureComponent implements OnInit {
   newVoiture= new Voiture(); 

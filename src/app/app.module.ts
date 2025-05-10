@@ -15,43 +15,32 @@ import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ListeMarquesComponent } from './liste-marques/liste-marques.component';
 import { UpdateMarqueComponent } from './update-marque/update-marque.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TokenInterceptor } from './services/token.interceptor';
 import { RegisterComponent } from './register/register.component';
 import { VerifEmailComponent } from './verif-email/verif-email.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    VoituresComponent,
-    AddVoitureComponent,
-    UpdateVoitureComponent,
-    RechercheParMarqueComponent,
-    RechercheParNomComponent,
-    SearchFilterPipe,
-    LoginComponent,
-    ForbiddenComponent,
-    ListeMarquesComponent,
-    UpdateMarqueComponent,
-    RegisterComponent,
-    VerifEmailComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule ,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule, // Required for Toastr
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
-  ],
-  providers: [{ provide : HTTP_INTERCEPTORS,
-    useClass : TokenInterceptor,
-    multi : true}
-    ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule, // Required for Toastr
+        ToastrModule.forRoot({
+            positionClass: 'toast-bottom-right',
+            preventDuplicates: true,
+        }), VoituresComponent,
+        AddVoitureComponent,
+        UpdateVoitureComponent,
+        RechercheParMarqueComponent,
+        RechercheParNomComponent,
+        SearchFilterPipe,
+        LoginComponent,
+        ForbiddenComponent,
+        ListeMarquesComponent,
+        UpdateMarqueComponent,
+        RegisterComponent,
+        VerifEmailComponent], providers: [{ provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptor,
+            multi: true }, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
