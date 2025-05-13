@@ -43,8 +43,10 @@ listeVoitures(): Observable<Voiture[]> {
   return this.http.get<Voiture[]>(this.apiURL+"/all");  
 } 
 ajouterVoiture( v: Voiture):Observable<Voiture>{
-  
-  return this.http.post<Voiture>(this.apiURL+"/addvoit", v);
+    let jwt = this.authService.getToken(); 
+      jwt = "Bearer "+jwt; 
+      let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
+  return this.http.post<Voiture>(this.apiURL+"/addvoit", v,{headers:httpHeaders});
 
 } 
 supprimerVoiture( id:number){ 
