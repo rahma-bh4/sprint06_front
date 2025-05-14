@@ -13,7 +13,7 @@ import { NgFor } from '@angular/common';
 })
 export class ListeMarquesComponent implements OnInit {
   marques : Marque[]=[];
-  updateMarque:Marque={"idMar":0,"nomMar":""};
+  updateMarque:Marque={"idMar":null,"nomMar":""};
   ajout:boolean=true;
 
   constructor(private voitureService : VoitureService) { }
@@ -30,7 +30,7 @@ marqueUpdated(cat:Marque):void{
   // Si ajout est faux, modifier la marque existante
   const index = this.marques.findIndex(m => m.idMar === cat.idMar);
   this.marques[index] = cat;}*/
- this.updateMarque={"idMar":0,"nomMar":""};
+ this.updateMarque={"idMar":null,"nomMar":""};
  this.ajout=true;
   
 

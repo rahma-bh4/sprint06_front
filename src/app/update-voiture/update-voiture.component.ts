@@ -44,7 +44,7 @@ console.log(cats);
 });
 this.voitureService.consulterVoiture(this.activatedRoute.snapshot.params['id']).
 subscribe( prod =>{ this.currentVoiture = prod; 
-this.updatedMarId = this.currentVoiture.marque.idMar;
+this.updatedMarId = this.currentVoiture.marque.idMar!;
 } ) ;
  
         this.myForm=this.formBuilder.group({

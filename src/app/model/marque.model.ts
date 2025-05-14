@@ -1,4 +1,4 @@
 export class Marque{
-    idMar!:number;
+    idMar!:number|null; // ou idCat? : number;;
     nomMar!:string;
 }
